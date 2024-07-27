@@ -30,7 +30,7 @@
 import cryptoService from '@/services/cryptoService';
 
 export default {
-    name: "EstadoActual",
+    name: "ActualState",
     data() {
         return {
             userId: this.$store.state.userName,

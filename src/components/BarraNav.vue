@@ -5,7 +5,7 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 text-black">
           <li><router-link to="./PurchaseSale" class="nav-link px-2 text-black">Compra Venta</router-link></li>
           <li><router-link to="./HistorialMov" class="nav-link px-2 text-black">Historial de Movimientos</router-link></li>
-          <li><router-link to="./EstadoActual" class="nav-link px-2 text-black">Estado actual</router-link></li>
+          <li><router-link to="./ActualState" class="nav-link px-2 text-black">Estado actual</router-link></li>
           <li><router-link to="./InvestAnalysis" class="nav-link px-2 text-black">Analisis de Inversiones</router-link></li>
         </ul>        
       </div>

@@ -167,7 +167,7 @@ export default {
             }
         },
         currentState() {
-            this.$router.push({ name: 'EstadoActual' });
+            this.$router.push({ name: 'ActualState' });
         },
         formatNumber(value) {
             return value.toLocaleString('es-AR');

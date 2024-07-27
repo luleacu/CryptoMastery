@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import NegociacionView from '../views/NegociacionView.vue';
 import HistorialMovView from '../views/HistorialMovView.vue';
-import EstadoActualView from '../views/EstadoActualView.vue';
+import ActualStateView from '../views/ActualStateView.vue';
 import store from '@/store'; // Asegúrate de importar el store
 
 const routes = [
@@ -35,9 +35,9 @@ const routes = [
     meta: { requiresAuth: true }, // Requiere autenticación
   },
   {
-    path: '/EstadoActual',
-    name: 'EstadoActual',
-    component: EstadoActualView,
+    path: '/ActualState',
+    name: 'ActualState',
+    component: ActualStateView,
     meta: { requiresAuth: true }, // Requiere autenticación
   },
 ];
@@ -47,7 +47,6 @@ const router = createRouter({
   routes,
 });
 
-// Guarda de navegación global para verificar autenticación
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.state.userName === '') {
