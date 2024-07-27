@@ -51,29 +51,32 @@
     </div>
     
     <div class="row mt-4">
-      <div class="col-12 mb-3">
-        <div class="card text-light">
-          <div class="card-body">
-            <h3 class="card-title">{{ action }}</h3>
-            <ul class="list-group list-group-flush text-dark">
-              <li class="list-group-item">
-                La cantidad {{ action }} de: {{ cryptoCode }} es: {{
-                action === 'compra' ? cryptoAmountCompra : cryptoAmountVenta }}
-              </li>
-              <li class="list-group-item">
-                El total pagado es: $
-                {{
-                action === 'compra'
-                  ? totalAsk * cryptoAmountCompra
-                  : totalBid * cryptoAmountVenta
-                }}
-              </li>
-              <li class="list-group-item">Fecha {{ dateFormat() }}</li>
-            </ul>
-          </div>
-        </div>
+  <div class="col-3"></div> 
+  <div class="col-6 mb-3 d-flex justify-content-center"> 
+    <div class="card text-light w-100"> 
+      <div class="card-body">
+        <h3 class="card-title">{{ action }}</h3>
+        <ul class="list-group list-group-flush text-dark">
+          <li class="list-group-item">
+            La cantidad {{ action }} de: {{ cryptoCode }} es: {{
+            action === 'compra' ? cryptoAmountCompra : cryptoAmountVenta }}
+          </li>
+          <li class="list-group-item">
+            El total pagado es: $
+            {{
+            action === 'compra'
+              ? totalAsk * cryptoAmountCompra
+              : totalBid * cryptoAmountVenta
+            }}
+          </li>
+          <li class="list-group-item">Fecha {{ dateFormat() }}</li>
+        </ul>
       </div>
     </div>
+  </div>
+  <div class="col-3"></div> 
+</div>
+
   </div>
 </template>
 
