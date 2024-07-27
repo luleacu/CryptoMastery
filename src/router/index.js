@@ -1,25 +1,66 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import NegociacionView from '../views/NegociacionView.vue';
+import HistorialMovView from '../views/HistorialMovView.vue';
+import EstadoActualView from '../views/EstadoActualView.vue';
+import store from '@/store'; // Asegúrate de importar el store
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'Home',
+    component: HomeView,
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: '/PrintPrincipal',
+    name: 'PrintPrincipal',
+    component: () => import('../components/PrintPrincipal.vue'),
+  },
+  {
+    path: '/InvestAnalysis',
+    name: 'InvestAnalysis',
+    component: () => import('../components/InvestAnalysis.vue'),
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/PurchaseSale',
+    name: 'PurchaseSale',
+    component: NegociacionView,
+    meta: { requiresAuth: true }, // Requiere autenticación
+  },
+  {
+    path: '/HistorialMov',
+    name: 'HistorialMov',
+    component: HistorialMovView,
+    meta: { requiresAuth: true }, // Requiere autenticación
+  },
+  {
+    path: '/EstadoActual',
+    name: 'EstadoActual',
+    component: EstadoActualView,
+    meta: { requiresAuth: true }, // Requiere autenticación
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+// Guarda de navegación global para verificar autenticación
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.state.userName === '') {
+      next({
+        path: '/',
+        query: { redirect: to.fullPath },
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;
