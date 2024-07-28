@@ -74,8 +74,8 @@ export default {
 
 h1,
 h2 {
-  color: #00FF00; /* Verde brillante */
+  color: #00FF00; 
   font-size: xx-large;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra negra */
+  
 }
 </style>

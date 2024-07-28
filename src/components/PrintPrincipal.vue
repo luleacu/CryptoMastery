@@ -122,53 +122,46 @@ export default {
 <style scoped>
 .titulo {
   padding: 20px 10px;
-  margin: 20px 0;
+  margin: 20px 15px;
   text-align: center;
-  border: 2px solid #006400; /* Verde oscuro */
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.7) inset; /* Sombra negra */
-  color: #00FF00; /* Verde brillante */
-  background-color: #000; /* Negro */
+  border: 2px solid #006400;  
+  color: #333; 
+  background-color: #006400; 
   border-radius: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  
 }
 h2 {
   margin: 0;
-  flex-grow: 1; /* Asegura que el h2 ocupe todo el espacio disponible */
+  flex-grow: 1; 
   text-align: center;
+  
 }
 .username {
-  color: #00FF00; /* Verde brillante */
+  color: #00FF00; 
   font-size: 1.2em;
 }
-
-body {
-  background-color: #000; /* Negro */
-  color: #FFF; /* Blanco */
-}
-
 .card-title {
-  color: #00FF00; /* Verde brillante */
+  color: #00FF00; 
 }
 
 .card {
-  border: 2px solid #00FF00; /* Verde brillante */
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.7); /* Sombra negra */
+  border: 2px solid #00FF00; 
   border-radius: 10px;
 }
 
 .card-header {
-  background-color: #006400; /* Verde oscuro */
-  border-bottom: 2px solid #00FF00; /* Verde brillante */
+  background-color: #006400;
+  border-bottom: 2px solid #00FF00; 
 }
 
 .card-body {
-  background-color: #333; /* Gris oscuro */
+  background-color: #333; 
 }
 
 .card-text {
-  color: #FFF; /* Blanco */
+  color: #FFF; 
 }
 
 .row {

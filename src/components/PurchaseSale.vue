@@ -271,6 +271,7 @@ export default {
 .card {
   background-color: #006400; 
   border-radius: 10px;
+  border: 2px solid #00FF00;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 

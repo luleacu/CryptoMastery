@@ -44,11 +44,11 @@ body{
 
 .h1 {
   text-align: center;
-  border: 2px solid rgb(0, 100, 0); /* Borde verde oscuro */
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7) inset; /* Sombra negra */
+  border: 2px solid rgb(2, 136, 2); 
+  box-shadow: 0px 0px 10px 0px rgb(161, 255, 161) inset; 
   padding: 10px;
-  color: rgb(0, 100, 0); /* Verde oscuro */
-  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.195); /* Sombra blanca */
+  color: rgb(0, 100, 0); 
+  
 }
 
 nav {
@@ -57,10 +57,10 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: black; /* Color negro */
+  color: black; 
 }
 
 nav a.router-link-exact-active {
-  color: rgb(1, 111, 1); /* Verde oscuro */
+  color: rgb(1, 111, 1); 
 }
 </style>

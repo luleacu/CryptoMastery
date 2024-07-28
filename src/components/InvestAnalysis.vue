@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1 class="h1">Análisis de Inversiones</h1>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -113,19 +112,8 @@ export default {
 
 <style scoped>
 
-h1,
 h2 {
     color: #00FF00; 
     font-size: xx-large;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-}
-.table-dark {
-    background-color: #333;
-}
-.text-success {
-    color: green;
-}
-.text-danger {
-    color: red;
 }
 </style>

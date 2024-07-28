@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1 class="h1">Historial de Movimientos</h1>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -31,54 +30,52 @@
                 </tbody>
             </table>
         </div>
-        <div v-if="selectionTransaction">
-            <h2>Detalle de la transacción seleccionada</h2>
-            <p><strong>Id:</strong> {{ selectionTransaction._id }}</p>
-            <p><strong>Cryptomoneda:</strong> {{ selectionTransaction.crypto_code }}</p>
-            <p><strong>Accion:</strong> {{ selectionTransaction.action === "purchase" ? "Compra" : "Venta" }}</p>
-            <p><strong>Cantidad:</strong> {{ selectionTransaction.crypto_amount }}</p>
-            <p><strong>Precio:</strong> $ {{ formatNumber(selectionTransaction.money) }}</p>
-            <p><strong>Fecha:</strong> {{ getDateArgentina(selectionTransaction.datetime) }}</p>
+
+        <div v-if="showEditForm" class="modal-overlay">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h2>Editar transacción</h2>
+                    <button class="close-button" @click="closeEditForm">X</button>
+                </div>
+                <form @submit.prevent="saveChanges">
+                    <div class="modal-body">
+                        <div class="mb-3 row align-items-center justify-content-center">
+                            <label for="cryptoCode" class="col-md-4 col-form-label">Cryptomoneda:</label>
+                            <div class="col-md-6">
+                                <input type="text" id="cryptoCode" v-model="editForm.crypto_code" disabled>
+                            </div>
+                        </div>
+                        <div class="mb-3 row align-items-center justify-content-center">
+                            <label for="action" class="col-md-4 col-form-label">Acción:</label>
+                            <div class="col-md-6">
+                                <input type="text" id="action" v-model="editForm.action" disabled>
+                            </div>
+                        </div>
+                        <div class="mb-3 row align-items-center justify-content-center">
+                            <label for="cryptoAmount" class="col-md-4 col-form-label">Cantidad:</label>
+                            <div class="col-md-6">
+                                <input type="number" id="cryptoAmount" v-model="editForm.crypto_amount">
+                            </div>
+                        </div>
+                        <div class="mb-3 row align-items-center justify-content-center">
+                            <label for="money" class="col-md-4 col-form-label">Precio:</label>
+                            <div class="col-md-6">
+                                <input type="number" id="money" v-model="editForm.money" step="any">
+                            </div>
+                        </div>
+                        <div class="mb-3 row align-items-center justify-content-center">
+                            <label for="datetime" class="col-md-4 col-form-label">Fecha:</label>
+                            <div class="col-md-6">
+                                <input type="text" id="datetime" :value="getDateArgentina(editForm.datetime)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <button type="submit">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div v-if="selectionTransaction && showEditForm" class="container mt-4">
-            <h2>Editar transacción</h2>
-            <form @submit.prevent="saveChanges">
-                <div class="mb-3 row align-items-center justify-content-center">
-                    <label for="cryptoCode" class="col-md-2 col-form-label">Cryptomoneda:</label>
-                    <div class="col-md-2">
-                        <input type="text" id="cryptoCode" v-model="editForm.crypto_code" disabled>
-                    </div>
-                </div>
-                <div class="mb-3 row align-items-center justify-content-center">
-                    <label for="action" class="col-md-2 col-form-label">Acción:</label>
-                    <div class="col-md-2">
-                        <input type="text" id="action" v-model="editForm.action" disabled>
-                    </div>
-                </div>
-                <div class="mb-3 row align-items-center justify-content-center">
-                    <label for="cryptoAmount" class="col-md-2 col-form-label">Cantidad:</label>
-                    <div class="col-md-2">
-                        <input type="number" id="cryptoAmount" v-model="editForm.crypto_amount">
-                    </div>
-                </div>
-                <div class="mb-3 row align-items-center justify-content-center">
-                    <label for="money" class="col-md-2 col-form-label">Precio:</label>
-                    <div class="col-md-2">
-                        <input type="number" id="money" v-model="editForm.money" step="any">
-                    </div>
-                </div>
-                <div class="mb-3 row align-items-center justify-content-center">
-                    <label for="datetime" class="col-md-2 col-form-label">Fecha:</label>
-                    <div class="col-md-2">
-                        <input type="text" id="datetime" :value="getDateArgentina(editForm.datetime)">
-                    </div>
-                </div>
-                <div class="text-center">
-                    <button type="submit">Guardar cambios</button>
-                </div>
-            </form>
-        </div>
-        
     </div>
 </template>
 
@@ -138,15 +135,12 @@ export default {
         async editTransaction(id) {
             try {
                 const transaccion = await cryptoService.readTransaction(id);
-                this.showEditForm(transaccion);
+                this.selectionTransaction = transaccion;
+                this.editForm = { ...transaccion };
+                this.showEditForm = true;
             } catch (error) {
                 console.error('Error al editar la transacción', error);
             }
-        },
-        showEditForm(transaccion) {
-            this.selectionTransaction = transaccion;
-            this.editForm = { ...transaccion };
-            this.showEditForm = true;
         },
         async saveChanges() {
             try {
@@ -166,24 +160,69 @@ export default {
                 console.error('Error al borrar la transacción', error);
             }
         },
-        currentState() {
-            this.$router.push({ name: 'ActualState' });
+        closeEditForm() {
+            this.showEditForm = false;
         },
         formatNumber(value) {
             return value.toLocaleString('es-AR');
         }
     }
 };
-
 </script>
 
 <style scoped>
-
-h1,
-h2 {
+ h2 {
     color: #00FF00; 
     font-size: xx-large;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+    
 }
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    max-width: 90%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.modal-footer {
+    text-align: center;
+}
 </style>
