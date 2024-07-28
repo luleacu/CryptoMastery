@@ -115,8 +115,6 @@ export default {
     });
   }
 };
-
-
 </script>
 
 <style scoped>
@@ -130,18 +128,21 @@ export default {
   border-radius: 10px;
   display: flex;
   align-items: center;
-  
 }
+
 h2 {
   margin: 0;
   flex-grow: 1; 
   text-align: center;
-  
+  font-size: 4em; 
+  font-weight: bold;
 }
+
 .username {
   color: #00FF00; 
   font-size: 1.2em;
 }
+
 .card-title {
   color: #00FF00; 
 }
@@ -172,5 +173,4 @@ h2 {
 .mb-3 {
   margin-bottom: 1rem !important;
 }
-
 </style>
