@@ -7,8 +7,7 @@
     </div>
   </template>
   
-  <script>
- 
+  <script> 
  
 import PrintPrincipal from "@/components/PrintPrincipal.vue";
 import PurchaseSale from "@/components/PurchaseSale.vue";

@@ -21,8 +21,7 @@ export default {
 
 <style scoped>
 .navbar {
-  margin-bottom: 50px;
-  
+  margin-bottom: 50px;  
 }
 .nav-link {
   color: #00a300;
@@ -30,8 +29,7 @@ export default {
   border: 2px solid #00FF00;
   border-radius: 10%; 
   padding: 15px 150px; 
-  background-color: #333;
-  
+  background-color: #333;  
 }
 
 .nav-link:hover {

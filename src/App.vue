@@ -6,7 +6,6 @@
       </div>
       <BarraNav/>
     <router-view />
-
   </div>
 </template>
 

@@ -173,8 +173,7 @@ export default {
 <style scoped>
  h2 {
     color: #00FF00; 
-    font-size: xx-large;
-    
+    font-size: xx-large;    
 }
 
 .modal-overlay {

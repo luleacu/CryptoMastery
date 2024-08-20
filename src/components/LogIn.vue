@@ -16,9 +16,7 @@
           <label for="floatingInput">Ingrese su usuario</label>
         </div>
         <p v-if="!isUsuarioValid && userName !== ''" class="text-danger">
-          El nombre de usuario no es válido. Debe tener al menos 10 caracteres y
-          contener al menos una letra y un número
-        </p>
+          El nombre de usuario no es válido. Debe tener al menos 10 caracteres y contener al menos una letra y un número</p>
         <br /><br />
         <button 
           type="submit" 
@@ -75,7 +73,6 @@ export default {
 h1,
 h2 {
   color: #00FF00; 
-  font-size: xx-large;
-  
+  font-size: xx-large;  
 }
 </style>
