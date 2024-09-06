@@ -107,7 +107,7 @@ export default {
         async getHistorial() {
             try {
                 let transactions = await cryptoService.getTransactionsUser();
-                transactions = transactions.sort((a, b) => new Date(b.datetime) - new Date(a.datetime)); // Ordenar por fecha descendente
+                transactions = transactions.sort((a, b) => new Date(b.datetime) - new Date(a.datetime)); 
                 this.historial = transactions;
             } catch (err) {
                 console.error("Error recuperando el historial de usuario", err);

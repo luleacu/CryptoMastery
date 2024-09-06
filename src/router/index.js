@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import NegociacionView from '../views/NegociacionView.vue';
 import HistorialMovView from '../views/HistorialMovView.vue';
 import ActualStateView from '../views/ActualStateView.vue';
-import store from '@/store'; // Asegúrate de importar el store
+import store from '@/store'; 
 
 const routes = [
   {
@@ -26,19 +26,19 @@ const routes = [
     path: '/PurchaseSale',
     name: 'PurchaseSale',
     component: NegociacionView,
-    meta: { requiresAuth: true }, // Requiere autenticación
+    meta: { requiresAuth: true }, 
   },
   {
     path: '/HistorialMov',
     name: 'HistorialMov',
     component: HistorialMovView,
-    meta: { requiresAuth: true }, // Requiere autenticación
+    meta: { requiresAuth: true }, 
   },
   {
     path: '/ActualState',
     name: 'ActualState',
     component: ActualStateView,
-    meta: { requiresAuth: true }, // Requiere autenticación
+    meta: { requiresAuth: true },
   },
 ];
 
